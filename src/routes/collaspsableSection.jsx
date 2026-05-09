@@ -5,7 +5,7 @@ function CollapsableSection({ title, children }) {
     return (
         <>
             <div className="section-header">
-                <button onChange={() => setExpand(!expand)}> {title} <span>{expand ? '▲' : '▼'}</span> </button>
+                <button onClick={() => setExpand(!expand)}> {title} <span>{expand ? '▲' : '▼'}</span> </button>
             </div>
 
             {expand && (

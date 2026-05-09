@@ -1,11 +1,16 @@
 import { Outlet } from "react-router-dom";
+import Sidebar from "./sidebar.jsx";
 
 function Root() {
     return (
         <>
-            <nav>My side bar</nav>
-            <div className="main">
-                <Outlet />
+            <div className="main-container">
+                <div className="sidebar">
+                    <Sidebar />
+                </div>
+                <div className="CV">
+                    <Outlet />
+                </div>
             </div>
         </>
     )

@@ -54,9 +54,9 @@ function cvReducer(state, action) {
         case 'editEducation': {
             return {
                 ...state,
-                education: state.education.map(edu => {
+                education: state.education.map(edu => (
                     edu.id === action.payload.id ? { ...action, ...action.payload } : { ...action }
-                })
+                ))
             }
         }
 

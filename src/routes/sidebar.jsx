@@ -30,7 +30,7 @@ function Sidebar() {
         if (section === "Education") {
             setEduInput({ ...eduInput, [name]: value });
         } else if (section === "Experience") {
-            setEduInput({ ...expInput, [name]: value });
+            setExpInput({ ...expInput, [name]: value });
         }
     }
 
@@ -78,18 +78,38 @@ function Sidebar() {
                 <div className="education-container">
                     <CollapsableSection title={"Education"}>
                         <form onSubmit={e => handleSave(e, "Education")}>
-                            {state.education.map(item => {
-                                <div>
-                                    <h2>{item}</h2>
-                                    <input
-                                        name="Education"
-                                        type="text"
-                                        value={`Enter ${item}`}
-                                        onChange={e => handleInputChange(e, "Education")} />
-                                </div>
-                            })}
+                            <input
+                                name="school"
+                                type="text"
+                                placeholder="School"
+                                value={eduInput.school}
+                                onChange={e => handleInputChange(e, "Education")} />
+                            <input
+                                name="degree"
+                                type="text"
+                                placeholder="Degree"
+                                value={eduInput.degree}
+                                onChange={e => handleInputChange(e, "Education")} />
+                            <input
+                                name="startDate"
+                                type="text"
+                                placeholder="Start Date"
+                                value={eduInput.startDate}
+                                onChange={e => handleInputChange(e, "Education")} />
+                            <input
+                                name="endDate"
+                                type="text"
+                                placeholder="End Date"
+                                value={eduInput.endDate}
+                                onChange={e => handleInputChange(e, "Education")} />
+                            <input
+                                name="location"
+                                type="text"
+                                placeholder="Location"
+                                value={eduInput.location}
+                                onChange={e => handleInputChange(e, "Education")} />
+                            <button type="submit">Save</button>
                         </form>
-                        <button type="submit">Save</button>
                     </CollapsableSection>
 
                 </div>
@@ -97,19 +117,43 @@ function Sidebar() {
                 <div className="experience-container">
                     <CollapsableSection title={"Experience"}>
                         <form onSubmit={e => handleSave(e, "Experience")}>
-                            {state.experience.map(item => {
-                                <div>
-                                    <h2>{item}</h2>
-                                    <input
-                                        name="Experience"
-                                        type="text"
-                                        value={`Enter ${item}`}
-                                        onChange={e => handleInputChange(e, "Experience")}
-                                    />
-                                </div>
-                            })}
+                            <input
+                                name="companyName"
+                                type="text"
+                                placeholder="Company Name"
+                                value={expInput.companyName}
+                                onChange={e => handleInputChange(e, "Experience")} />
+                            <input
+                                name="position"
+                                type="text"
+                                placeholder="Position"
+                                value={expInput.position}
+                                onChange={e => handleInputChange(e, "Experience")} />
+                            <input
+                                name="startDate"
+                                type="text"
+                                placeholder="Start Date"
+                                value={expInput.startDate}
+                                onChange={e => handleInputChange(e, "Experience")} />
+                            <input
+                                name="endDate"
+                                type="text"
+                                placeholder="End Date"
+                                value={expInput.endDate}
+                                onChange={e => handleInputChange(e, "Experience")} />
+                            <input
+                                name="location"
+                                type="text"
+                                placeholder="Location"
+                                value={expInput.location}
+                                onChange={e => handleInputChange(e, "Experience")} />
+                            <textarea
+                                name="description"
+                                placeholder="Description"
+                                value={expInput.description}
+                                onChange={e => handleInputChange(e, "Experience")} />
+                            <button type="submit">Save</button>
                         </form>
-                        <button type="submit">Save</button>
                     </CollapsableSection>
                 </div>
 
