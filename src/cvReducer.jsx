@@ -3,21 +3,36 @@ function cvReducer(state, action) {
     switch (action.type) {
 
         case 'addEducation': {
+            const newEdu = action.payload ||
+                { id: crypto.randomUUID(), school: '', degree: '', startDate: '', endDate: '', location: '' }
+
+            if (!newEdu.id) {
+                newEdu.id = crypto.randomUUID();
+            }
+
             return {
                 ...state,
                 education: [
                     ...state.education,
-                    { id: crypto.randomUUID(), school: '', degree: '', startDate: '', endDate: '', location: '' }
+                    newEdu
                 ]
             }
         }
 
         case 'addExperience': {
+
+            const newExp = action.payload ||
+                { id: crypto.randomUUID(), companyName: '', position: '', startDate: '', endDate: '', location: '', description: '' }
+
+            if (!newExp.id) {
+                newExp.id = crypto.randomUUID();
+            }
+
             return {
                 ...state,
                 experience: [
                     ...state.experience,
-                    { id: crypto.randomUUID(), companyName: '', position: '', startDate: '', endDate: '', location: '', description: '' }
+                    newExp
                 ]
             }
         }
@@ -42,6 +57,16 @@ function cvReducer(state, action) {
                 education: state.education.map(edu => {
                     edu.id === action.payload.id ? { ...action, ...action.payload } : { ...action }
                 })
+            }
+        }
+
+        case 'updatePersonalInfo': {
+            return {
+                ...state,
+                personalInfo: {
+                    ...state.personalInfo,
+                    [action.field]: action.value
+                }
             }
         }
     }
