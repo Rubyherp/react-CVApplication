@@ -1,12 +1,38 @@
 import { useContext, useState } from "react"
 import { CVContext } from "../CVProvider"
+import CollapsableSection from "./collaspsableSection";
 
 
 function Sidebar() {
 
-    const { state, updatePersonalInfo } = useContext(CVContext);
-    const [eduExpand, setEduExpand] = useState(false);
-    const [expExpand, setExpExpand] = useState(false);
+    const { state, addEducation, addExperience, updatePersonalInfo } = useContext(CVContext);
+
+    const defaultEdu = { id: null, school: '', degree: '', startDate: '', endDate: '', location: '' };
+    const defaultExp = { id: null, companyName: '', position: '', startDate: '', endDate: '', location: '', description: '' }
+
+    const [eduInput, setEduInput] = useState(defaultEdu);
+    const [expInput, setExpInput] = useState(defaultExp);
+
+    function handleSave(e, name) {
+        e.preventDefault();
+        if (name === "Education") {
+            addEducation(eduInput);
+            setEduInput(defaultEdu);
+        } else if (name === "Experience") {
+            addExperience(expInput);
+            setExpInput(defaultExp);
+        }
+    }
+
+    function handleInputChange(e, section) {
+        const { name, value } = e.target;
+
+        if (section === "Education") {
+            setEduInput({ ...eduInput, [name]: value });
+        } else if (section === "Experience") {
+            setEduInput({ ...expInput, [name]: value });
+        }
+    }
 
     return (
         <>
@@ -50,15 +76,46 @@ function Sidebar() {
                 </div>
 
                 <div className="education-container">
-                    <button onClick={() => { setEduExpand(!eduExpand) }}>Education</button>
+                    <CollapsableSection title={"Education"}>
+                        <form onSubmit={e => handleSave(e, "Education")}>
+                            {state.education.map(item => {
+                                <div>
+                                    <h2>{item}</h2>
+                                    <input
+                                        name="Education"
+                                        type="text"
+                                        value={`Enter ${item}`}
+                                        onChange={e => handleInputChange(e, "Education")} />
+                                </div>
+                            })}
+                        </form>
+                        <button type="submit">Save</button>
+                    </CollapsableSection>
+
                 </div>
 
                 <div className="experience-container">
-                    <h1>Experience</h1>
-                    <button onClick={() => { setExpExpand(!expExpand) }}>Education</button>
+                    <CollapsableSection title={"Experience"}>
+                        <form onSubmit={e => handleSave(e, "Experience")}>
+                            {state.experience.map(item => {
+                                <div>
+                                    <h2>{item}</h2>
+                                    <input
+                                        name="Experience"
+                                        type="text"
+                                        value={`Enter ${item}`}
+                                        onChange={e => handleInputChange(e, "Experience")}
+                                    />
+                                </div>
+                            })}
+                        </form>
+                        <button type="submit">Save</button>
+                    </CollapsableSection>
                 </div>
 
             </div>
         </>
     )
 }
+
+export default Sidebar;

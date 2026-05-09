@@ -1,6 +1,20 @@
+import { useState } from "react";
 
-function collapsableSection({ title, children }) {
+function CollapsableSection({ title, children }) {
+    const [expand, setExpand] = useState(false);
+    return (
+        <>
+            <div className="section-header">
+                <button onChange={() => setExpand(!expand)}> {title} <span>{expand ? '▲' : '▼'}</span> </button>
+            </div>
 
+            {expand && (
+                <div section-content>
+                    {children}
+                </div>
+            )}
+        </>
+    )
 }
 
-export default collapsableSection;
+export default CollapsableSection;
