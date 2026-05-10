@@ -2,7 +2,6 @@
 //
 
 function DisplayForm({ category }) {
-
 }
 
 export default DisplayForm;
