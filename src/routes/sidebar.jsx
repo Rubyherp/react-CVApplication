@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { CVContext } from "../CVProvider"
-import CollapsableSection from "./collaspsableSection";
+import CollapsableSection from "../helper/collaspsableSection";
 
 
 function Sidebar() {
@@ -36,9 +36,9 @@ function Sidebar() {
 
     return (
         <>
-            <div className="sidebar">
+            <div className="flex flex-col border border-red-500">
 
-                <div className="personalInfo-container">
+                <div className="border border-blue-500">
 
                     <h1>Personal Details</h1>
 

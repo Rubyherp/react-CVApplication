@@ -1,4 +1,4 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useReducer } from "react";
 import cvReducer from "./cvReducer";
 
 const initialState = {
@@ -49,16 +49,7 @@ function CVProvider({ children }) {
     }
 
     return (
-        <CVContext.Provider value={
-            {
-                state,
-                addEducation,
-                addExperience,
-                deleteEducation,
-                deleteExperience,
-                updatePersonalInfo
-            }
-        }>
+        <CVContext.Provider value={{ state, addEducation, addExperience, deleteEducation, deleteExperience, updatePersonalInfo }}>
             {children}
         </CVContext.Provider>
     )
