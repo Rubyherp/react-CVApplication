@@ -1,18 +1,20 @@
 import { useContext, useState } from "react"
 import { CVContext } from "../CVProvider"
 import CollapsableSection from "../helper/collaspsableSection";
-import DisplayList from "../helper/displayList";
+import ManagedSection from "../helper/managedSection";
+import GenericButton from "../helper/genericButton";
 
 
 function Sidebar() {
 
     const { state, addEducation, addExperience, updatePersonalInfo } = useContext(CVContext);
-
     const defaultEdu = { id: null, school: '', degree: '', startDate: '', endDate: '', location: '' };
     const defaultExp = { id: null, companyName: '', position: '', startDate: '', endDate: '', location: '', description: '' }
 
     const [eduInput, setEduInput] = useState(defaultEdu);
     const [expInput, setExpInput] = useState(defaultExp);
+    const [addEduExpand, setAddEduExpand] = useState(null);
+    const [addExpExpand, setAddExpExpand] = useState(null);
 
     function handleSave(e, name) {
         e.preventDefault();
@@ -48,12 +50,7 @@ function Sidebar() {
                             <label className="text-xl flex flex-col">
                                 <div className="font-semibold">Full Name</div>
                                 <input name={"fullName"} value={state.personalInfo.fullName} onChange={updatePersonalInfo}
-                                    className="
-                                    text-base 
-                                    bg-slate-100 
-                                    rounded-lg mt-4
-                                    p-2
-                                    "
+                                    className=" text-base bg-slate-100 rounded-lg mt-4 p-2 "
                                 />
                             </label>
                         </div>
@@ -62,12 +59,7 @@ function Sidebar() {
                             <label className="text-xl flex flex-col">
                                 <div className="font-semibold">Email</div>
                                 <input name={"email"} value={state.personalInfo.email} onChange={updatePersonalInfo}
-                                    className="
-                                    text-base 
-                                    bg-slate-100 
-                                    rounded-lg mt-4
-                                    p-2
-                                    "
+                                    className=" text-base bg-slate-100 rounded-lg mt-4 p-2 "
                                 />
                             </label>
                         </div>
@@ -76,12 +68,7 @@ function Sidebar() {
                             <label className="text-xl flex flex-col">
                                 <div className="font-semibold">Phone Number</div>
                                 <input name={"number"} value={state.personalInfo.number} onChange={updatePersonalInfo}
-                                    className="
-                                    text-base 
-                                    bg-slate-100 
-                                    rounded-lg mt-4
-                                    p-2
-                                    "
+                                    className=" text-base bg-slate-100 rounded-lg mt-4 p-2 "
                                 />
                             </label>
                         </div>
@@ -89,13 +76,7 @@ function Sidebar() {
                             <label className="text-xl flex flex-col">
                                 <div className="font-semibold">Address</div>
                                 <input name={"address"} value={state.personalInfo.address} onChange={updatePersonalInfo}
-                                    className="
-                                    text-base 
-                                    bg-slate-100 
-                                    rounded-lg mt-4
-                                    p-2
-                                    "
-
+                                    className=" text-base bg-slate-100 rounded-lg mt-4 p-2 "
                                 />
                             </label>
                         </div>
@@ -105,14 +86,20 @@ function Sidebar() {
                 {/* Education */}
                 <div className="flex flex-col border border-purple-500 rounded-lg bg-white shadow-lg p-4">
                     <CollapsableSection title={"Education"}>
-                        <DisplayList category={"education"}></DisplayList>
+                        <ManagedSection category={"education"} isAdding={addEduExpand}></ManagedSection>
+                        {!addEduExpand &&
+                            <GenericButton title={"+ Education"} fn={() => setAddEduExpand(!addEduExpand)}></GenericButton>
+                        }
                     </CollapsableSection>
                 </div>
 
                 {/* Experience */}
                 <div className="flex flex-col border border-purple-500 rounded-lg bg-white shadow-lg p-4">
                     <CollapsableSection title={"Experience"}>
-                        <DisplayList category={"experience"}></DisplayList>
+                        <ManagedSection category={"experience"} isAdding={addExpExpand}></ManagedSection>
+                        {!addExpExpand &&
+                            <GenericButton title={"+ Experience"} fn={() => setAddExpExpand(!addExpExpand)}></GenericButton>
+                        }
                     </CollapsableSection>
                 </div>
 
