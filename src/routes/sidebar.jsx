@@ -3,6 +3,7 @@ import { CVContext } from "../CVProvider"
 import CollapsableSection from "../helper/collaspsableSection";
 import ManagedSection from "../helper/managedSection";
 import GenericButton from "../helper/genericButton";
+import GenericInput from "../helper/genericInput";
 
 
 function Sidebar() {
@@ -47,38 +48,18 @@ function Sidebar() {
                     <form className="flex flex-col gap-4">
 
                         <div>
-                            <label className="text-xl flex flex-col">
-                                <div className="font-semibold">Full Name</div>
-                                <input name={"fullName"} value={state.personalInfo.fullName} onChange={updatePersonalInfo}
-                                    className=" text-base bg-slate-100 rounded-lg mt-4 p-2 "
-                                />
-                            </label>
+                            <GenericInput title={"Full Name"} name={"fullName"} value={state.personalInfo.fullName} onChange={updatePersonalInfo} />
                         </div>
 
                         <div>
-                            <label className="text-xl flex flex-col">
-                                <div className="font-semibold">Email</div>
-                                <input name={"email"} value={state.personalInfo.email} onChange={updatePersonalInfo}
-                                    className=" text-base bg-slate-100 rounded-lg mt-4 p-2 "
-                                />
-                            </label>
+                            <GenericInput title={"Email"} name={"email"} value={state.personalInfo.email} onChange={updatePersonalInfo} />
                         </div>
 
                         <div>
-                            <label className="text-xl flex flex-col">
-                                <div className="font-semibold">Phone Number</div>
-                                <input name={"number"} value={state.personalInfo.number} onChange={updatePersonalInfo}
-                                    className=" text-base bg-slate-100 rounded-lg mt-4 p-2 "
-                                />
-                            </label>
+                            <GenericInput title={"Phone Number"} name={"number"} value={state.personalInfo.number} onChange={updatePersonalInfo} />
                         </div>
                         <div>
-                            <label className="text-xl flex flex-col">
-                                <div className="font-semibold">Address</div>
-                                <input name={"address"} value={state.personalInfo.address} onChange={updatePersonalInfo}
-                                    className=" text-base bg-slate-100 rounded-lg mt-4 p-2 "
-                                />
-                            </label>
+                            <GenericInput title={"Address"} name={"address"} value={state.personalInfo.address} onChange={updatePersonalInfo} />
                         </div>
                     </form>
                 </div>
@@ -87,8 +68,16 @@ function Sidebar() {
                 <div className="flex flex-col border border-purple-500 rounded-lg bg-white shadow-lg p-4">
                     <CollapsableSection title={"Education"}>
                         <ManagedSection category={"education"} isAdding={addEduExpand}></ManagedSection>
+
                         {!addEduExpand &&
                             <GenericButton title={"+ Education"} fn={() => setAddEduExpand(!addEduExpand)}></GenericButton>
+                        }
+
+                        {addEduExpand &&
+                            <GenericButton title={"Cancel"} fn={() => setAddEduExpand(!addEduExpand)}></GenericButton> &&
+
+                            <GenericButton title={"Save"} fn={null}></GenericButton>
+                            //TODO: should revert addEduExpand. Handle Submit form
                         }
                     </CollapsableSection>
                 </div>
@@ -99,6 +88,9 @@ function Sidebar() {
                         <ManagedSection category={"experience"} isAdding={addExpExpand}></ManagedSection>
                         {!addExpExpand &&
                             <GenericButton title={"+ Experience"} fn={() => setAddExpExpand(!addExpExpand)}></GenericButton>
+                        }
+                        {addExpExpand &&
+                            <GenericButton title={"Cancel"} fn={() => setAddExpExpand(!addExpExpand)}></GenericButton>
                         }
                     </CollapsableSection>
                 </div>

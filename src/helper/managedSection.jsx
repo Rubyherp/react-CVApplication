@@ -1,8 +1,9 @@
 import DisplayList from "./displayList";
+import DisplayForm from "./displayForm";
 
 function ManagedSection({ category, isAdding }) {
     return isAdding
-        ? <div>Hello</div>
+        ? <DisplayForm category={category}></DisplayForm>
         : <DisplayList category={category}></DisplayList>
 }
 

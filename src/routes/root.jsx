@@ -1,5 +1,5 @@
-import { Outlet } from "react-router-dom";
 import Sidebar from "./sidebar.jsx";
+import CVPreview from "./CVPreview.jsx";
 
 function Root() {
     return (
@@ -10,8 +10,8 @@ function Root() {
                     <Sidebar />
                 </div>
 
-                <div className="flex-1 p-8 bg-white shadow-lg rounded-xl">
-                    <Outlet />
+                <div className="flex-1 bg-white shadow-lg rounded-xl">
+                    <CVPreview />
                 </div>
 
             </div>
