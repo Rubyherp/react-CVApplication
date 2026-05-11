@@ -5,7 +5,7 @@ function Root() {
     return (
         <div className="flex h-screen w-full bg-slate-100 overflow-hidden">
             {/* Sidebar Container */}
-            <aside className="w-[450px] h-full overflow-y-auto border-r border-slate-200 bg-white p-6">
+            <aside className="w-[450px] h-full overflow-y-auto border-r border-slate-200 bg-white p-6 mb-8">
                 <Sidebar />
             </aside>
 

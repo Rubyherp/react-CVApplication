@@ -1,5 +1,5 @@
 
-function GenericButton({ title, fn, type = "button", form = null }) {
+function GenericButton({ title, fn = null, type = "button", form = null }) {
     return (
         <button
             form={form}
