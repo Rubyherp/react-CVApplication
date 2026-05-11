@@ -40,7 +40,7 @@ function Sidebar() {
 
     return (
         <>
-            <div className="flex flex-col gap-8 p-4 border border-red-500 bg-slate-100">
+            <div className="flex flex-col gap-8 p-4 border border-white bg-slate-100">
 
                 {/* Add personal info */}
                 <div className="flex flex-col border border-purple-500 rounded-lg bg-white shadow-lg p-4">

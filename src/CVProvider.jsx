@@ -4,11 +4,15 @@ import cvReducer from "./cvReducer";
 const initialState = {
     personalInfo: { fullName: 'Xiang Neng', email: 'horxiangneng123@gmail.com', number: '123456789', address: 'Singapore' },
     education: [
-        { id: 1, school: 'National University of Singapore', degree: 'Computer Science', startDate: 'August 2025', endDate: 'August 2029', location: 'Singapore' },
-        { id: 2, school: 'National University of Singapore', degree: 'Computer Science', startDate: 'August 2025', endDate: 'August 2029', location: 'Singapore' },
-        { id: 3, school: 'National University of Singapore', degree: 'Computer Science', startDate: 'August 2025', endDate: 'August 2029', location: 'Singapore' },
+        { id: 1, school: 'National University of Singapore', degree: 'Computer Science', startDate: '08/2025', endDate: '08/2029', location: 'Singapore' },
+        { id: 2, school: 'National University of Singapore', degree: 'Computer Science', startDate: '08/2025', endDate: '08/2029', location: 'Singapore' },
+        { id: 3, school: 'National University of Singapore', degree: 'Computer Science', startDate: '08/2025', endDate: '08/2029', location: 'Singapore' },
     ],
-    experience: [{ id: 1, companyName: 'Ultra pte ltd.', position: 'Software Engineer', startDate: 'January 2025', endDate: '', location: 'Singapore', description: 'Software Engineer for Ultra Pte Ltd. Built complext software for various clients in the finance and F&B industry, ranging from high-speed trading apps to odering apps' },]
+    experience: [
+        { id: 1, companyName: 'Ultra pte ltd.', position: 'Software Engineer', startDate: 'January 2025', endDate: '', location: 'Singapore', description: 'Software Engineer for Ultra Pte Ltd. Built complext software for various clients in the finance and F&B industry, ranging from high-speed trading apps to odering apps' },
+        { id: 1, companyName: 'Ultra pte ltd.', position: 'Software Engineer', startDate: 'January 2025', endDate: '', location: 'Singapore', description: 'Software Engineer for Ultra Pte Ltd. Built complext software for various clients in the finance and F&B industry, ranging from high-speed trading apps to odering apps' },
+        { id: 1, companyName: 'Ultra pte ltd.', position: 'Software Engineer', startDate: 'January 2025', endDate: '', location: 'Singapore', description: 'Software Engineer for Ultra Pte Ltd. Built complext software for various clients in the finance and F&B industry, ranging from high-speed trading apps to odering apps' },
+    ]
 }
 
 export const CVContext = createContext();
