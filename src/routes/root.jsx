@@ -3,20 +3,20 @@ import CVPreview from "./CVPreview.jsx";
 
 function Root() {
     return (
-        <div className="min-h-screen bg-slate-100 py-8">
-            <div className="container mx-auto max-w-6xl overflow-hidden flex flex-row gap-10">
+        <div className="flex h-screen w-full bg-slate-100 overflow-hidden">
+            {/* Sidebar Container */}
+            <aside className="w-[450px] h-full overflow-y-auto border-r border-slate-200 bg-white p-6">
+                <Sidebar />
+            </aside>
 
-                <div className="w-96 bg-slate-100 h-screen overflow-y-auto sticky top-0">
-                    <Sidebar />
-                </div>
-
-                <div className="flex-1 bg-white shadow-lg rounded-xl">
+            {/* CV Preview Container */}
+            <main className="flex-1 h-full overflow-y-auto p-12 bg-white">
+                <div className="mx-auto w-fit shadow-2xl">
                     <CVPreview />
                 </div>
-
-            </div>
+            </main>
         </div>
-    )
+    );
 }
 
 export default Root;
