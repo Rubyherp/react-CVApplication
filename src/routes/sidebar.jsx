@@ -74,9 +74,10 @@ function Sidebar() {
                         }
 
                         {addEduExpand &&
-                            <GenericButton title={"Cancel"} fn={() => setAddEduExpand(!addEduExpand)}></GenericButton> &&
-
-                            <GenericButton title={"Save"} fn={null}></GenericButton>
+                            <div className="flex gap-2 mt-4 justify-between">
+                                <GenericButton title={"Cancel"} fn={() => setAddEduExpand(!addEduExpand)}></GenericButton>
+                                <GenericButton form={"edu-form"} type="submit" title={"Save"} fn={null}></GenericButton>
+                            </div>
                             //TODO: should revert addEduExpand. Handle Submit form
                         }
                     </CollapsableSection>
@@ -86,11 +87,17 @@ function Sidebar() {
                 <div className="flex flex-col border border-purple-500 rounded-lg bg-white shadow-lg p-4">
                     <CollapsableSection title={"Experience"}>
                         <ManagedSection category={"experience"} isAdding={addExpExpand}></ManagedSection>
+
                         {!addExpExpand &&
                             <GenericButton title={"+ Experience"} fn={() => setAddExpExpand(!addExpExpand)}></GenericButton>
                         }
-                        {addExpExpand &&
-                            <GenericButton title={"Cancel"} fn={() => setAddExpExpand(!addExpExpand)}></GenericButton>
+
+                        {addExpExpand && (
+                            <div className="flex gap-2 mt-4 justify-between">
+                                <GenericButton title={"Cancel"} fn={() => setAddExpExpand(!addExpExpand)}></GenericButton>
+                                <GenericButton form={"exp-form"} type="submit" title={"Save"} fn={null}></GenericButton>
+                            </div>
+                        )
                         }
                     </CollapsableSection>
                 </div>
